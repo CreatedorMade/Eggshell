@@ -9,8 +9,8 @@ Here's a mockup example of some Eggshell code, showcasing some incredibly basic 
 
 ```
 class root.main{ //Create main as a child of root - this class will be instantiated to start the program
-  include root; //Include the root and math libraries for access to loops, adding etc.
-  include root.math;
+  #root //Include the root and math libraries for access to loops, adding etc.
+  #root.math
   (array<string> args){ //The constructor for main, which takes the commandline arguments as an array of strings
     sum = int(0) //Define the variable sum as 0
     foreach(args, var s, (){ //Using the foreach method. It takes an array, a variable, and a method
