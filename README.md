@@ -8,15 +8,16 @@ Eggshell works on the concept of nesting taken to its extreme. Every class (excl
 Here's a mockup example of some Eggshell code, showcasing some incredibly basic elements like classes, variables, including, etc.:
 
 ```
-class root.main{ //Create main as a child of root - this class will be instantiated to start the program
-  #root //Include the root and math libraries for access to loops, adding etc.
-  #root.math
-  (array<string> args){ //The constructor for main, which takes the commandline arguments as an array of strings
-    sum = int(0) //Define the variable sum as 0
-    foreach(args, var s, (){ //Using the foreach method. It takes an array, a variable, and a method
-      sum = add(sum, s.toInt()) //Convert each string in args to an int, then add each one to sum
-    })
-    println(sum.toString()) //Print sum
-  }
+class root.main(root.array<root.string> args){ //Create main as a child of root - this class will be instantiated to start the program
+  #root //Include root for access to loops, basic types etc.
+  #root.math //Include math for access to arithmetic, numeral types etc.
+  var sum = 0 //Define a new variable, sum, as an integer with value 0
+  forEach(args, var s, { //Using the foreach class. It takes an array, a variable and some code as arguments.
+    ## //Since the code inside the foreach is its own class, we must include its parent (two hash symbols includes the parent class)
+    sum = add(sum, s.toInt()) //Convert each argument into an int, then add it to the sum
+  })
+  println(sum) //Print the result
+  //Since there is no return statement in main, it will return void()
 }
 ```
+As a side note, this will change quite a bit as I figure out how the language will work.
